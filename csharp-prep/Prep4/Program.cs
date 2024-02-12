@@ -1,19 +1,47 @@
-using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 class Program
 {
     static void Main(string[] args)
     {
         Console.WriteLine("Hello Prep4 World!");
+        List<int> numbers = new List<int>();
+        int listEntry = -1;
 
-        List<int> myInts = new List<int>();
-        var moreInt = new List<int>();
+        Console.WriteLine("Enter a list of numbers, type 0 when finished.");
 
-        moreInt.Add(34);
-        moreInt.Add(10);
+        while (listEntry != 0)
+        {
+            Console.WriteLine("Enter Number: ");
+            string userInput = Console.ReadLine();
+            listEntry = int.Parse(userInput);
 
-        foreach(var n in moreInt) 
+            if (listEntry != 0)
             {
-            System.Console.WriteLine($"n = {n}");
+                numbers.Add(listEntry);
             }
+        }
+
+        int sum = 0;
+        foreach (int number in numbers)
+        {
+            sum += number;
+        }
+        
+        Console.WriteLine($"The sum is: {sum}");
+
+        float average = ((float)sum) / numbers.Count;
+        Console.WriteLine($"The averages is: {average}");
+
+        int largest = numbers[0];
+
+        foreach (int number in numbers)
+        {
+            if (number > largest)
+            {
+                largest = number;
+            }
+        }
+        Console.WriteLine($"The largest number is: {largest}");
     }
 }

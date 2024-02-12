@@ -1,4 +1,5 @@
 using System;
+using System.Security.Cryptography;
 
 class Program
 {
@@ -6,49 +7,32 @@ class Program
     {
         Console.WriteLine("Hello Prep3 World!");
 
-        int count = 5;
-
-        while(count < 10)
-            System.Console.WriteLine($"Count = {count++}");
-            count++;
-        
-        while(count < 15)
-        {
-            System.Console.WriteLine($"Count = {count}");
-            count++;
-        }
-
-        // do-while loop
-        do {
-            System.Console.WriteLine($"AnotherCount = {anotherCount++}");
-        } while(AnotherCount < 10);
-        
-        // for loop
-        for(int i =0; i<5; i++){
-            System.Console.WriteLine($"i = {i}");
-        }
-
-       // System.Console.WriteLine($"i = {i}");
-
         Random randomGenerator = new Random();
-        int number = randomGenerator.Next(1, 11);
-        while (!isCorrect){
-            System.Console.WriteLine("Guess a random number");
-            int guess = int.Parse(Console.ReadLine());
+        int magicNumber = randomGenerator.Next(1,100);
+        int userGuess = 0;
 
-            if (guess > randomNumber) [
-                System.Console.WriteLine("Too High");
-            ]
+        do
+        {
+            Console.WriteLine("What is your guess between 1 and 100? ");
+            string secondInput = Console.ReadLine();
+            userGuess = int.Parse(secondInput);
 
-            else if (guess < randomNumber) {
-                System.Console.WriteLine("Too Low");
-            }
-
-            else 
+            if (userGuess > magicNumber)
             {
-                System.Console.WriteLine("Correct");
-                isCorrect = true;
+                Console.WriteLine("Lower");
             }
-        }
+
+            else if (userGuess < magicNumber)
+            {
+                Console.WriteLine("Higher");
+            }
+
+            else
+            {
+                Console.WriteLine("You got it!");
+            }
+        
+        } while (userGuess != magicNumber);
+       
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 
 class Program
 {
@@ -6,30 +7,46 @@ class Program
     {
         Console.WriteLine("Hello Prep5 World!");
 
-        //returnType FunctionName(paramType paramName1, paramType paramName2)
-        //{
-            //FunctionName body
-        //}
+        DisplayWelcome();
 
-        int Add2(int number){
-            return number + 2;
-        }
+        string userName = PromptUserName();
+        int userNumber = PromptUserNumber();
 
-        int more = Add2(10);
+        int squaredNumber = SquareNumber(userNumber);
 
-        void PrintName(string name){
-            System.Console.WriteLine($"Name is {name}");
-            return;
-        }
+        DisplayResult(userName, squaredNumber);
 
-        PrintName("Bob");
-
-        var y = 0;
+        static void DisplayWelcome()
         {
-            var w =10;
-            w = y + 4;
-            y = w + 5;
+            Console.WriteLine("Welcome to the Program!");
         }
-        y = w + 4;
+
+        static string PromptUserName()
+        {
+            Console.WriteLine("What is your name?");
+            string name = Console.ReadLine();
+
+            return name;
+        }
+
+        static int PromptUserNumber()
+        {
+            Console.WriteLine("What is your favorite number: ");
+            int number = int.Parse(Console.ReadLine());
+
+            return number;
+        }
+
+        static int SquareNumber(int number)
+        {
+            int Square = number * number;
+            return Square;
+
+        }
+       
+       static void DisplayResult(string name, int Square)
+       {
+            Console.WriteLine($"{name}, the square of your number is {Square}");
+       }
     }
 }
